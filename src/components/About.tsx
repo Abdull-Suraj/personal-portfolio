@@ -2,63 +2,48 @@
 
 import { useEffect, useRef } from "react";
 
-const SKILL_CATEGORIES = [
-  {
-    title: "Backend",
-    color: "text-cyan-400",
-    bg: "bg-cyan-400/10",
-    border: "border-cyan-400/30",
-    skills: [
-      { name: "C# / .NET", level: 90 },
-      { name: "Java / Spring Boot", level: 85 },
-      { name: "Python / FastAPI", level: 80 },
-      { name: "REST & GraphQL APIs", level: 88 },
-    ],
-  },
-  {
-    title: "Frontend",
-    color: "text-indigo-400",
-    bg: "bg-indigo-400/10",
-    border: "border-indigo-400/30",
-    skills: [
-      { name: "React / Next.js", level: 87 },
-      { name: "Angular", level: 82 },
-      { name: "TypeScript", level: 88 },
-      { name: "Tailwind CSS", level: 85 },
-    ],
-  },
-  {
-    title: "Cloud",
-    color: "text-violet-400",
-    bg: "bg-violet-400/10",
-    border: "border-violet-400/30",
-    skills: [
-      { name: "Microsoft Azure", level: 85 },
-      { name: "AWS", level: 80 },
-      { name: "Serverless / Lambda", level: 78 },
-      { name: "CI/CD Pipelines", level: 83 },
-    ],
-  },
-  {
-    title: "DevOps",
-    color: "text-green-400",
-    bg: "bg-green-400/10",
-    border: "border-green-400/30",
-    skills: [
-      { name: "Docker", level: 88 },
-      { name: "Kubernetes", level: 80 },
-      { name: "Terraform / IaC", level: 75 },
-      { name: "GitHub Actions", level: 85 },
-    ],
-  },
+/* ─── Skill icon cards ─── */
+const SKILLS = [
+  // Backend
+  { name: "C# / .NET", color: "#a78bfa", bg: "bg-violet-500/10", border: "border-violet-500/30", icon: "C#" },
+  { name: "Java", color: "#f97316", bg: "bg-orange-500/10", border: "border-orange-500/30", icon: "Java" },
+  { name: "Python", color: "#facc15", bg: "bg-yellow-500/10", border: "border-yellow-500/30", icon: "Py" },
+  { name: "REST & GraphQL", color: "#e879f9", bg: "bg-fuchsia-500/10", border: "border-fuchsia-500/30", icon: "API" },
+  // Frontend
+  { name: "React / Next.js", color: "#22d3ee", bg: "bg-cyan-500/10", border: "border-cyan-500/30", icon: "Re" },
+  { name: "Angular", color: "#ef4444", bg: "bg-red-500/10", border: "border-red-500/30", icon: "Ng" },
+  { name: "TypeScript", color: "#3b82f6", bg: "bg-blue-500/10", border: "border-blue-500/30", icon: "TS" },
+  { name: "Tailwind CSS", color: "#06b6d4", bg: "bg-cyan-400/10", border: "border-cyan-400/30", icon: "TW" },
+  // Cloud
+  { name: "Microsoft Azure", color: "#60a5fa", bg: "bg-blue-400/10", border: "border-blue-400/30", icon: "Az" },
+  { name: "AWS", color: "#fb923c", bg: "bg-orange-400/10", border: "border-orange-400/30", icon: "AWS" },
+  { name: "Serverless", color: "#818cf8", bg: "bg-indigo-500/10", border: "border-indigo-500/30", icon: "λ" },
+  { name: "CI/CD Pipelines", color: "#34d399", bg: "bg-emerald-500/10", border: "border-emerald-500/30", icon: "CI" },
+  // DevOps
+  { name: "Docker", color: "#38bdf8", bg: "bg-sky-500/10", border: "border-sky-500/30", icon: "Do" },
+  { name: "Kubernetes", color: "#6366f1", bg: "bg-indigo-400/10", border: "border-indigo-400/30", icon: "K8s" },
+  { name: "Terraform / IaC", color: "#a78bfa", bg: "bg-purple-500/10", border: "border-purple-500/30", icon: "TF" },
+  { name: "GitHub Actions", color: "#f1f5f9", bg: "bg-slate-400/10", border: "border-slate-400/30", icon: "GH" },
 ];
 
 const STATS = [
   { value: "3+", label: "Years Experience" },
   { value: "20+", label: "Projects Delivered" },
   { value: "10+", label: "Technologies" },
-  { value: "UK", label: "Based in London" },
+  { value: "🇬🇧", label: "Birmingham, UK" },
 ];
+
+/* Simple SVG icon for each skill that renders a stylised letter badge */
+function SkillIcon({ label, color }: { label: string; color: string }) {
+  return (
+    <span
+      className="inline-flex items-center justify-center w-10 h-10 rounded-xl text-xs font-bold font-mono shrink-0"
+      style={{ color, background: `${color}18`, border: `1px solid ${color}40` }}
+    >
+      {label}
+    </span>
+  );
+}
 
 export default function About() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -118,42 +103,32 @@ export default function About() {
 
         {/* Bio */}
         <div className="reveal max-w-3xl mx-auto text-slate-400 text-base leading-relaxed text-center">
-          I&apos;m a full-stack software engineer based in the UK with a strong
+          I&apos;m Abdullahi Suraj, a full-stack software developer based in Birmingham, England, UK with a strong
           background in designing and delivering enterprise-grade applications.
           My experience spans cloud-native microservices, scalable backend
           systems, and modern frontend frameworks. I enjoy working in agile
           teams, championing clean code and continuous improvement.
         </div>
 
-        {/* Skill grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {SKILL_CATEGORIES.map((cat, ci) => (
-            <div
-              key={cat.title}
-              className={`reveal p-5 rounded-2xl border bg-slate-800/40 ${cat.border} space-y-4`}
-              style={{ transitionDelay: `${ci * 80}ms` }}
-            >
-              <h3 className={`text-sm font-semibold uppercase tracking-wider ${cat.color}`}>
-                {cat.title}
-              </h3>
-              <div className="space-y-3">
-                {cat.skills.map((skill) => (
-                  <div key={skill.name} className="space-y-1">
-                    <div className="flex justify-between text-xs">
-                      <span className="text-slate-300">{skill.name}</span>
-                      <span className="text-slate-500">{skill.level}%</span>
-                    </div>
-                    <div className="h-1.5 rounded-full bg-slate-700/70 overflow-hidden">
-                      <div
-                        className={`h-full rounded-full ${cat.bg} border ${cat.border}`}
-                        style={{ width: `${skill.level}%` }}
-                      />
-                    </div>
-                  </div>
-                ))}
+        {/* Skills grid */}
+        <div className="reveal space-y-6">
+          <p className="text-center text-slate-500 text-sm font-medium uppercase tracking-widest">
+            Technologies &amp; Tools
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+            {SKILLS.map((skill, i) => (
+              <div
+                key={skill.name}
+                className={`flex items-center gap-3 p-3 rounded-xl border ${skill.bg} ${skill.border} hover:scale-[1.03] transition-transform duration-200`}
+                style={{ transitionDelay: `${i * 30}ms` }}
+              >
+                <SkillIcon label={skill.icon} color={skill.color} />
+                <span className="text-sm text-slate-300 font-medium leading-tight">
+                  {skill.name}
+                </span>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

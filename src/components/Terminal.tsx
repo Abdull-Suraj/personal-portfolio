@@ -9,11 +9,11 @@ interface Line {
 
 const TERMINAL_SCRIPT: Line[] = [
   { type: "command", text: "whoami" },
-  { type: "output", text: "alex.johnson" },
+  { type: "output", text: "abdullahi.suraj" },
   { type: "blank", text: "" },
   { type: "command", text: "cat profile.txt" },
-  { type: "output", text: "Software Engineer  |  3 yrs UK experience" },
-  { type: "output", text: "London, United Kingdom  🇬🇧" },
+  { type: "output", text: "Software Developer  |  UK-based" },
+  { type: "output", text: "Birmingham, England, UK  🇬🇧" },
   { type: "blank", text: "" },
   { type: "command", text: "cat skills.txt" },
   { type: "output", text: "Backend   » C# .NET  |  Java  |  Python" },
@@ -99,7 +99,7 @@ export default function Terminal() {
         <span className="w-3 h-3 rounded-full bg-yellow-400/90" />
         <span className="w-3 h-3 rounded-full bg-green-500/90" />
         <span className="ml-3 text-xs text-slate-500 select-none">
-          bash — alex@portfolio
+          bash — abdullahi@portfolio
         </span>
       </div>
 

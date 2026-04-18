@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Alex Johnson | Software Engineer",
+  title: "Abdullahi Suraj | Software Developer",
   description:
-    "Personal portfolio of Alex Johnson — Software Engineer with 3 years UK experience specialising in .NET, Java, Python, React, Angular, Azure, AWS, Docker and Kubernetes.",
+    "Personal portfolio of Abdullahi Suraj — Software Developer based in Birmingham, England, UK, specialising in .NET, Java, Python, React, Angular, Azure, AWS, Docker and Kubernetes.",
 };
 
 export default function RootLayout({

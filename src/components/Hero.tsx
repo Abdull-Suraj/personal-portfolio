@@ -37,17 +37,24 @@ export default function Hero() {
           <div className="space-y-2">
             <p className="text-slate-400 text-lg font-medium">Hi, I&apos;m</p>
             <h1 className="text-5xl sm:text-6xl font-extrabold tracking-tight leading-none gradient-text">
-              Alex Johnson
+              Abdullahi Suraj
             </h1>
             <h2 className="text-2xl sm:text-3xl font-semibold text-slate-300">
-              Software Engineer
+              Software Developer
             </h2>
+            <p className="flex items-center gap-1.5 text-slate-400 text-sm">
+              <svg className="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              Birmingham, England, UK
+            </p>
           </div>
 
           <p className="text-slate-400 text-base leading-relaxed max-w-md">
-            Full-stack engineer with{" "}
+            Full-stack developer with{" "}
             <span className="text-cyan-400 font-semibold">
-              3 years of UK experience
+              UK-based experience
             </span>{" "}
             building scalable cloud-native applications. Passionate about clean
             architecture, microservices, and DevOps best practices.
@@ -72,6 +79,16 @@ export default function Hero() {
               className="px-6 py-3 rounded-xl font-semibold text-sm bg-cyan-500 hover:bg-cyan-400 text-slate-900 transition-colors shadow-lg shadow-cyan-500/20"
             >
               View Projects
+            </a>
+            <a
+              href="/cv.pdf"
+              download
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 hover:bg-indigo-500/20 hover:text-indigo-200 transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+              Download CV
             </a>
             <a
               href="#contact"
