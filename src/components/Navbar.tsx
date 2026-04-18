@@ -5,11 +5,12 @@ import { useEffect, useState } from "react";
 const NAV_LINKS = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
+  { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
   { label: "Contact", href: "#contact" },
 ];
 
-const SECTION_IDS = ["home", "about", "projects", "contact"] as const;
+const SECTION_IDS = ["home", "about", "experience", "projects", "contact"] as const;
 
 export default function Navbar() {
   const [active, setActive] = useState("home");
@@ -53,7 +54,7 @@ export default function Navbar() {
           href="#home"
           className="text-base font-bold tracking-tight text-cyan-400 shrink-0"
         >
-          AJ<span className="text-indigo-400">.</span>
+          AS<span className="text-indigo-400">.</span>
         </a>
 
         {/* Desktop links */}
