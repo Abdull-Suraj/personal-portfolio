@@ -18,7 +18,7 @@ const EXPERIENCES: ExperienceItem[] = [
     company: "Liaison Group",
     role: "Software Developer",
     location: "Birmingham, England, UK",
-    period: "Present",
+    period: "2023 – Present",
     type: "Full-time",
     current: true,
     description: [
