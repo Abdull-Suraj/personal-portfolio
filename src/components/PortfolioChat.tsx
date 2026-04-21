@@ -227,6 +227,10 @@ function renderText(text: string) {
   });
 }
 
+/* ─── Animation delay constants ─────────────────────────────────────────── */
+const BOUNCE_DELAYS = ["0ms", "150ms", "300ms"] as const;
+const REPLY_DELAY_MS = 600;
+
 /* ─── Component ─────────────────────────────────────────────────────────── */
 export default function PortfolioChat() {
   const [open, setOpen] = useState(false);
@@ -242,6 +246,15 @@ export default function PortfolioChat() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const nextId = useRef(1);
+  const replyTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (replyTimeoutRef.current !== null) {
+        clearTimeout(replyTimeoutRef.current);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     if (open) {
@@ -257,15 +270,20 @@ export default function PortfolioChat() {
     setInput("");
     setTyping(true);
 
+    if (replyTimeoutRef.current !== null) {
+      clearTimeout(replyTimeoutRef.current);
+    }
+
     // Simulate slight delay for a natural feel
-    setTimeout(() => {
+    replyTimeoutRef.current = setTimeout(() => {
       const reply = getResponse(text);
       setMessages((prev) => [
         ...prev,
         { id: nextId.current++, role: "assistant", text: reply },
       ]);
       setTyping(false);
-    }, 600);
+      replyTimeoutRef.current = null;
+    }, REPLY_DELAY_MS);
   }
 
   function handleSubmit(e: FormEvent) {
@@ -343,9 +361,13 @@ export default function PortfolioChat() {
                   </svg>
                 </div>
                 <div className="bg-slate-800/70 border border-slate-700/50 rounded-2xl rounded-tl-sm px-4 py-3 flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce" style={{ animationDelay: "0ms" }} />
-                  <span className="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce" style={{ animationDelay: "150ms" }} />
-                  <span className="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce" style={{ animationDelay: "300ms" }} />
+                  {BOUNCE_DELAYS.map((delay) => (
+                    <span
+                      key={delay}
+                      className="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce"
+                      style={{ animationDelay: delay }}
+                    />
+                  ))}
                 </div>
               </div>
             )}
